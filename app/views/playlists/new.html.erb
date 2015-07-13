@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <div class="well">
+    <h1>New Playlist</h1>
+
+    <%= @playlist.errors.full_messages.first if @playlist.errors.any? %>
+
+    <%= render "new_form" %>
+  </div>
+<% end %>

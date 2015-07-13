@@ -1,0 +1,36 @@
+<div> <%= @playlist.name %> </div>
+<p>
+  <%= link_to "Change your playlist name", edit_playlist_path(@playlist)%>
+</p>
+
+<div>
+  <% unless @songs.nil? %>
+    <% @songs.each do |song| %>
+    <div>
+      Artist: <%= song.artist %>,
+      Song Name: <%= song.song_name %>,
+      Genre: <%= song.genre %>,
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-sm-4">
+    <button type="button" class="btn btn-primary btn-block">
+      <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist)%>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-warning btn-block">
+      <!-- want this to eventually be a form to remove songs?  -->
+      <%= link_to "Edit your playlist.", edit_playlist_path(@playlist)%>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-danger btn-block">
+      <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete%>
+    </button>
+  </div>
+</div>

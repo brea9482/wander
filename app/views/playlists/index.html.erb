@@ -1,0 +1,12 @@
+<h1>Breakable Toy</h1>
+<div>
+  <% unless @playlists.all.nil? %>
+    <% @playlists.each do |playlist| %>
+    <div>
+      <%= link_to playlist.name, playlist_path(playlist)%>
+    </div>
+    <% end %>
+  <% end %>
+  <br>
+  <%= link_to "Create new playlist", new_playlist_path %>
+</div>

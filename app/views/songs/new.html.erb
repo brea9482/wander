@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <div class="well">
+    <h1>Add a new song</h1>
+
+    <%= @song.errors.full_messages.first if @song.errors.any? %>
+
+    <%= render "form" %>
+  </div>
+<% end %>

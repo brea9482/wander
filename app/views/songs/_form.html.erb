@@ -1,0 +1,34 @@
+<div class="form-horizontal" role="form">
+    <%= form_for [@playlist, @song] do |f| %>
+      <div class="form-group">
+        <%= f.label :artist, "Artist", class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :artist, placeholder: "Artist (required)", class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :song_name, "Song Name", class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :song_name, placeholder: "Song Name (required)", class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :album, "Album", class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :album, placeholder: "Album", class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :genre, "Genre", class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :genre, placeholder: "Genre (required)", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit "Add this song!", class: "btn btn-default" %>
+        </div>
+      </div>
+    <% end %>
+</div>
