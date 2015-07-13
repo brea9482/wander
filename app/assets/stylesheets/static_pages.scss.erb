@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.background-image body {
-  background: url('/assets/home.jpg') no-repeat center center fixed;
-  background-size: cover
+
+body {
+  text-align: center;
+  background: url('<%= asset_path("home.jpg") %> ') no-repeat center center fixed;
+  background-size: cover;
 }
