@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>BreakableToy</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div>
+  <head>
+    <title>Wander</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type} center") %>
+    <% end %>
+    </div>
 
-  <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message, class: "alert alert-#{message_type} center") %>
-  <% end %>
-  </div>
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <% if current_user %>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+      <h3 class="text-muted">
+        <%= link_to "Life\'s a Beach", root_path %>
+      </h3>
+    </div>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">BreakableToy</a></h1>
-      </li>
-    </ul>
+    <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
+    <%= render "layouts/footer" %>
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <% if current_user %>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </section>
-  </nav>
-
-  <%= yield %>
-  <%= debug(params) if Rails.env.development? %>
-  <%= render "layouts/footer" %>
-
-  <%= javascript_include_tag 'application' %>
-</body>
+    <%= javascript_include_tag 'application' %>
+  </body>
 </html>

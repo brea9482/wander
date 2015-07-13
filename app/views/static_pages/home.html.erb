@@ -1,7 +1,13 @@
-<div style=
-  "background: url('http://cdn.techpp.com/wp-content/uploads/2013/01/music-sharing-2.jpg');
-  background-size: contain;
-  height: 1000px;
-  position: cover;"
->
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wander</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="background-image">
+    <div class="">
+      <%= link_to "View all playlists", playlists_path%>
+    </div>
+  </body>
+</html>
