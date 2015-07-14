@@ -1,11 +1,19 @@
 class Playlist < ActiveRecord::Base
   belongs_to :user
 
+  has_many :playlist_songs
+  has_many :songs, through: :playlist_songs
+
   validates :name, presence: true
   validates :user_id, presence: true
 
-  def self.search(search)
-    where("name ILIKE :search",
-      search: "%#{search}%")
-  end
+  include PgSearch
+  pg_search_scope :search,
+    :against => :name,
+    :using => {
+      :tsearch => {:prefix => true}
+    },
+    :associated_against => {
+      :songs => [:artist, :genre, :album, :song_name]
+    }
 end
