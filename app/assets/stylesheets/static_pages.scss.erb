@@ -2,9 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$white: #fff;
 
-body {
+h3 {
+  margin-top: 7px;
+  margin-left: 5px;
+}
+
+.background-image {
   text-align: center;
-  background: url('<%= asset_path("home.jpg") %> ') no-repeat center center fixed;
+  background: url('<%= asset_path("phones.jpg") %> ') no-repeat center center fixed;
   background-size: cover;
+}
+
+.search-bar-container {
+  /* background: rgba(0, 0, 0, 0.8); */
+  border-color: transparent;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 99px;
+  position: absolute;
+  right: 0;
+  /* opacity:.36; */
+}
+
+.search-form {
+  border: transparent;
+  color: $white;
+  input {
+    background: rgba(0, 0, 0, 0.1);
+    opacity: .8;
+    color: $white;
+  }
+  ::-webkit-input-placeholder {
+   color: $white;
+  }
+}
+
+.home-header {
+  color: $white;
+  float: left;
+}
+
+.home-link {
+  margin-top: 580px;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: .8;
+  color: $white;
+}
+
+.wander-link:hover {
+  text-decoration: none;
+  color: $white
 }

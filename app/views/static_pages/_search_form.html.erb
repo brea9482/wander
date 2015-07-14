@@ -1,0 +1,9 @@
+<%= form_tag playlists_path, method: 'get', class: "search-form" do %>
+  <label class="control-label sr-only" for="inputSuccess5">
+    Hidden label
+  </label>
+  <%= text_field_tag :search, params[:search], class: "form-control input-lg", placeholder: "Wander..." %>
+  <% if Rails.env.test? %>
+    <%= submit_tag "Search" %>
+  <% end %>
+<% end %>

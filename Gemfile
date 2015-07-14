@@ -17,6 +17,7 @@ gem 'fog'
 gem 'dotenv-rails'
 gem 'carrierwave_direct'
 gem 'faker'
+gem 'pg_search'
 
 group :production do
   gem 'puma'
@@ -46,4 +47,4 @@ end
 
 gem 'coveralls', group: [:test], require: false
 
-# ruby "2.0.0"
+ruby "2.2.1"

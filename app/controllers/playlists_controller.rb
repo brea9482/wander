@@ -1,4 +1,6 @@
 class PlaylistsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def new
     @playlist = Playlist.new
   end
@@ -16,7 +18,11 @@ class PlaylistsController < ApplicationController
   end
 
   def index
-    @playlists = Playlist.all
+    if params[:search].present?
+      @playlists = Playlist.search(params[:search])
+    else
+      @playlists = Playlist.all
+    end
   end
 
   def show
@@ -24,7 +30,10 @@ class PlaylistsController < ApplicationController
     @playlist_songs = PlaylistSong.find_by(playlist_id: @playlist.id)
 
     unless @playlist_songs.nil?
-      @songs = Song.joins(:playlist_songs).where(id: @playlist_songs.song_id)
+      # @songs = PlaylistSong.joins(:song).where(playlist_id: @playlist_songs.playlist_id)
+      # @songs = Song.where(id: @playlist_songs.song_id)
+      @songs = Song.joins(:playlist_songs).where(playlist_songs: { playlist_id: @playlist_songs.playlist_id } )
+
     end
   end
 

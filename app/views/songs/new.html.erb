@@ -1,9 +1,9 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && @playlist.user == current_user %>
   <div class="well">
     <h1>Add a new song</h1>
 
     <%= @song.errors.full_messages.first if @song.errors.any? %>
 
-    <%= render "form" %>
+    <%= render "new_form" %>
   </div>
 <% end %>

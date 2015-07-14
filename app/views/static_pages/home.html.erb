@@ -6,8 +6,30 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="background-image">
-    <div class="">
-      <%= link_to "View all playlists", playlists_path%>
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <% if current_user %>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "home-header" %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', new_user_registration_path, class: "home-header" %></li>
+            <li><%= link_to 'Sign In', new_user_session_path, class: "home-header" %></li>
+          <% end %>
+        </ul>
+      </nav>
+      <h3>
+        <%= link_to "Wander", root_path, class: "home-header wander-link" %>
+      </h3>
+    </div>
+
+    <div class="search-bar-container">
+      <%= render "search_form" %>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="row">
+        <%=link_to 'View all playlists', playlists_path, class: "btn btn-default home-link"%>
     </div>
   </body>
 </html>
