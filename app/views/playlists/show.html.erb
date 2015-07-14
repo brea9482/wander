@@ -3,30 +3,37 @@
   <%= link_to "Change your playlist name", edit_playlist_path(@playlist) %>
 </p>
 
-<div>
+<div class="well">
   <% unless @songs.nil? %>
     <% @songs.each do |song| %>
     <div class="row">
-      Artist: <%= song.artist %>,
-      Song Name: <%= song.song_name %>,
-      Genre: <%= song.genre %>,
-      <%= link_to "Edit song", edit_playlist_song_path(@playlist, song) %>
-      <%= link_to "Delete song", playlist_song_path(@playlist, song), method: :delete %>
+      <ul class="list-unstyled">
+        <li> Artist: <%= song.artist %> </li>
+        <li> Song Name: <%= song.song_name %> </li>
+        <li> Genre: <%= song.genre %> </li>
+      </ul>
+      <% if @playlist.user == current_user%>
+        <%= link_to "Edit song", edit_playlist_song_path(@playlist, song) %> |
+        <%= link_to "Delete song", playlist_song_path(@playlist, song), method: :delete %>
+      <% end %>
+      <hr>
     </div>
     <% end %>
   <% end %>
 </div>
 
 <br>
-<div class="row">
-  <div class="col-sm-4">
-    <button type="button" class="btn btn-primary btn-block">
-      <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist) %>
-    </button>
+<% if @playlist.user == current_user%>
+  <div class="row">
+    <div class="col-sm-6">
+      <button type="button" class="btn btn-block">
+        <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist) %>
+      </button>
+    </div>
+    <div class="col-sm-6">
+      <button type="button" class="btn btn-block">
+        <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete, data: { confirm: "Are you sure?" } %>
+      </button>
+    </div>
   </div>
-  <div class="col-sm-4">
-    <button type="button" class="btn btn-danger btn-block">
-      <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete, data: { confirm: "Are you sure?" } %>
-    </button>
-  </div>
-</div>
+<% end %>

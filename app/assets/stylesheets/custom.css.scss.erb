@@ -1,0 +1,34 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$white: #fff;
+$orange: #FF8000;
+
+.container-body{
+  padding-top: 60px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.index-background-image {
+  text-align: center;
+  background: url('<%= asset_path("headphones_index.jpg") %> ') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.well {
+  opacity: .75;
+}
+
+.well hr {
+  border-color: gray;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.playlist-color {
+  background-color: $orange;
+  color: $white;
+  font-weight: bold;
+  opacity: 2 !important;
+}
