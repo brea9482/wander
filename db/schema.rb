@@ -26,18 +26,20 @@ ActiveRecord::Schema.define(version: 20150712014644) do
   create_table "playlists", force: :cascade do |t|
     t.string   "name",        null: false
     t.integer  "user_id",     null: false
-    t.text     "description"
+    t.string   "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string   "artist",     null: false
-    t.string   "song_name",  null: false
+    t.string   "artist",         null: false
+    t.string   "song_name",      null: false
     t.string   "album"
-    t.string   "genre",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "genre",          null: false
+    t.string   "soundcloud_url"
+    t.string   "youtube_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -71,7 +71,9 @@ class SongsController < ApplicationController
       :artist,
       :song_name,
       :album,
-      :genre
+      :genre,
+      :soundcloud_url,
+      :youtube_url
     )
   end
 end

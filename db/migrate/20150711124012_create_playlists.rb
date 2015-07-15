@@ -3,7 +3,7 @@ class CreatePlaylists < ActiveRecord::Migration
     create_table :playlists do |t|
       t.string :name, null: false
       t.integer :user_id, null: false
-      t.text :description
+      t.string :description, null: false
 
       t.timestamps null: false
     end
