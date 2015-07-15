@@ -5,6 +5,9 @@ class CreateSongs < ActiveRecord::Migration
       t.string :song_name, null: false
       t.string :album
       t.string :genre, null: false
+      t.string :soundcloud_url
+      t.string :youtube_url
+
 
       t.timestamps null: false
     end

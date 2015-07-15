@@ -5,11 +5,12 @@ class Playlist < ActiveRecord::Base
   has_many :songs, through: :playlist_songs
 
   validates :name, presence: true
+  validates :description, presence: true
   validates :user_id, presence: true
 
   include PgSearch
   pg_search_scope :search,
-    :against => :name,
+    :against => [:name, :description],
     :using => {
       :tsearch => {:prefix => true}
     },
