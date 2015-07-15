@@ -27,7 +27,7 @@ class Song < ActiveRecord::Base
   'Country',
   'Dance',
   'Dubstep',
-  'Electric',
+  'Electriconic',
   'Funk',
   'Hardcore',
   'Hop-Hop',
