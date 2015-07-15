@@ -11,6 +11,8 @@
         <li> Artist: <%= song.artist %> </li>
         <li> Song Name: <%= song.song_name %> </li>
         <li> Genre: <%= song.genre %> </li>
+        <div data-url="https://soundcloud.com/shura/shura-indecision-12-edit-1" class="sb-soundplayer-widget"></div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-ed6UeDp1ek" frameborder="0" allowfullscreen></iframe>
       </ul>
       <% if @playlist.user == current_user%>
         <%= link_to "Edit song", edit_playlist_song_path(@playlist, song) %> |
@@ -26,14 +28,10 @@
 <% if @playlist.user == current_user%>
   <div class="row">
     <div class="col-sm-6">
-      <button type="button" class="btn btn-block">
-        <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist) %>
-      </button>
+        <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist), class:"btn btn-default song-color" %>
     </div>
     <div class="col-sm-6">
-      <button type="button" class="btn btn-block">
-        <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete, data: { confirm: "Are you sure?" } %>
-      </button>
+        <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-default btn-danger" %>
     </div>
   </div>
 <% end %>

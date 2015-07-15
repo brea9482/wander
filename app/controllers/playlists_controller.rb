@@ -20,6 +20,8 @@ class PlaylistsController < ApplicationController
   def index
     if params[:search].present?
       @playlists = Playlist.search(params[:search])
+    elsif params[:id].present?
+      @playlists = Playlist.where(user_id: params[:id])
     else
       @playlists = Playlist.all
     end

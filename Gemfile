@@ -18,6 +18,7 @@ gem 'dotenv-rails'
 gem 'carrierwave_direct'
 gem 'faker'
 gem 'pg_search'
+gem 'soundcloud'
 
 group :production do
   gem 'puma'
