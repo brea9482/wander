@@ -16,6 +16,7 @@
       <nav>
         <ul class="nav nav-pills pull-right">
           <% if current_user %>
+            <li><%= link_to 'My Playlists', playlists_path(id: current_user.id), class: "home-header" %></li>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "home-header" %></li>
           <% else %>
             <li><%= link_to 'Sign Up', new_user_registration_path, class: "home-header" %></li>
@@ -32,9 +33,25 @@
       <%= yield %>
     </div>
     <%= debug(params) if Rails.env.development? %>
-    <div class="well">
+    <div class="well container">
       <%= render "layouts/footer" %>
     </div>
+
+    <script>
+      /* * * CONFIGURATION VARIABLES * * */
+      var sb_soundplayer_client_id = '<%= ENV["CLIENT_ID"] %>';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function(d, s, id) {
+          if (d.getElementById(id)) return;
+          var js, p, fjs = d.getElementsByTagName(s)[0];
+          p = /^http:/.test(d.location) ? 'http' : 'https';
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://cdnjs.cloudflare.com/ajax/libs/soundplayer-widget/0.2.3/soundplayer-widget.min.js';
+          fjs.parentNode.insertBefore(js, fjs);
+      })(document, 'script', 'sb-soundplayer-widget-sdk');
+    </script>
 
     <%= javascript_include_tag 'application' %>
   </body>
