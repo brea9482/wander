@@ -14,29 +14,48 @@
 
 
 <div class="well">
-  <% unless @songs.nil? %>
-    <% @songs.each do |song| %>
-    <div class="row">
-      <ul class="list-unstyled">
-        <li> Artist: <%= song.artist %> </li>
-        <li> Song Name: <%= song.song_name %> </li>
-        <li> Genre: <%= song.genre %> </li>
-        <% unless song.soundcloud_url.blank? %>
-          <div data-url="<%= song.soundcloud_url %>" class="sb-soundplayer-widget"></div>
+  <div id="content">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+      <li class="active"><a href="#playlist" data-toggle="tab">Playlist</a></li>
+      <li><a href="#recommendations" data-toggle="tab">Recommendations</a></li>
+    </ul>
+
+    <div id="my-tab-content" class="tab-content">
+      <div class="tab-pane active" id="playlist">
+        <% if @playlist.user != current_user%>
+          <%= link_to "Make a recommendation for this playlist!.", new_playlist_song_path(@playlist), class:"btn btn-default song-color" %>
+          <hr>
         <% end %>
-        <% unless song.youtube_url.blank? %>
-          <% url = song.youtube_url.gsub("watch?v=","embed/") %>
-          <iframe width="870" height="250" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+        <% unless @songs.nil? %>
+          <% @songs.each do |song| %>
+          <div class="row">
+            <ul class="list-unstyled">
+              <li> Artist: <%= song.artist %> </li>
+              <li> Song Name: <%= song.song_name %> </li>
+              <li> Genre: <%= song.genre %> </li>
+              <% unless song.soundcloud_url.blank? %>
+                <div data-url="<%= song.soundcloud_url %>" class="sb-soundplayer-widget"></div>
+              <% end %>
+              <% unless song.youtube_url.blank? %>
+                <% url = song.youtube_url.gsub("watch?v=","embed/") %>
+                <iframe width="870" height="250" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+              <% end %>
+            </ul>
+            <% if @playlist.user == current_user%>
+              <%= link_to "Edit song", edit_playlist_song_path(@playlist, song) %> |
+              <%= link_to "Delete song", playlist_song_path(@playlist, song), method: :delete %>
+            <% end %>
+            <hr>
+          </div>
+          <% end %>
         <% end %>
-      </ul>
-      <% if @playlist.user == current_user%>
-        <%= link_to "Edit song", edit_playlist_song_path(@playlist, song) %> |
-        <%= link_to "Delete song", playlist_song_path(@playlist, song), method: :delete %>
-      <% end %>
-      <hr>
-    </div>
-    <% end %>
-  <% end %>
+      </div>
+
+      <div class="tab-pane" id="recommendations">
+        <h1>need to add stuff here</h1>
+      </div>
+     </div>
+   </div>
 </div>
 
 <br>
