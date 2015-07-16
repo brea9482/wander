@@ -7,6 +7,13 @@ user = User.create!(
     password: "password",
     password_confirmation: "password"
   )
+
+User.create!(
+    email: "test@test.com",
+    password: "password",
+    password_confirmation: "password"
+  )
+
 Rails.logger.info "User Email: #{user.email}"
 
 # Rails.logger.info "==============================================="

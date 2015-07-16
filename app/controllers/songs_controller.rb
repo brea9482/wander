@@ -5,7 +5,11 @@ class SongsController < ApplicationController
 
   def new
     @playlist = Playlist.find(params[:playlist_id])
-    @playlist_song = PlaylistSong.new
+      if @playlist.user_id == current_user.id
+        @playlist_song = PlaylistSong.new
+      else
+        @recommendation_song = RecommendationSong.new
+      end
     @song = Song.new
   end
 
@@ -13,19 +17,41 @@ class SongsController < ApplicationController
     @playlist = Playlist.find(params[:playlist_id])
     @song = Song.new(song_params)
 
-    if @song.save
-      @playlist_song = PlaylistSong.new(playlist_id: @playlist.id, song_id: @song.id)
+    if @playlist.user_id == current_user.id
+      if @song.save
+        @playlist_song = PlaylistSong.new(playlist_id: @playlist.id, song_id: @song.id)
 
-      if @playlist_song.save
-        flash[:success] = 'Song added to your playlist!'
-        redirect_to @playlist
+        if @playlist_song.save
+          flash[:success] = 'Song added to your playlist!'
+          redirect_to @playlist
+        else
+          flash[:danger] = "OH SHIT"
+          render :new
+        end
       else
-        flash[:danger] = "OH SHIT"
+        flash[:danger] = 'Song not saved. See below for errors.'
         render :new
       end
     else
-      flash[:danger] = 'Song not saved. See below for errors.'
-      render :new
+      if @song.save
+        @recommendation_song = RecommendationSong.new(
+          playlist_id: @playlist.id,
+          song_id: @song.id,
+          recommendee_id: @playlist.user_id,
+          recommender_id: current_user.id
+        )
+
+        if @recommendation_song.save
+          flash[:success] = 'Song added to this playlist!'
+          redirect_to @playlist
+        else
+          flash[:danger] = "OH SHIT"
+          render :new
+        end
+      else
+        flash[:danger] = 'Song not saved. See below for errors.'
+        render :new
+      end
     end
   end
 

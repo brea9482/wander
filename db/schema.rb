@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 20150716145517) do
   end
 
   create_table "recommendation_songs", force: :cascade do |t|
-    t.integer  "song_id",     null: false
-    t.integer  "playlist_id", null: false
-    t.integer  "user_id",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "song_id",        null: false
+    t.integer  "playlist_id",    null: false
+    t.integer  "recommender_id", null: false
+    t.integer  "recommendee_id", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "songs", force: :cascade do |t|

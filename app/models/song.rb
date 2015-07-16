@@ -1,6 +1,8 @@
 class Song < ActiveRecord::Base
   has_many :playlist_songs
   has_many :playlists, through: :playlist_songs
+  has_many :recommendation_songs
+  has_many :playlists, through: :recommendation_songs
 
   validates :artist, presence: true
   validates :song_name, presence: true
