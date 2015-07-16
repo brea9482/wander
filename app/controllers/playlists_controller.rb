@@ -30,12 +30,14 @@ class PlaylistsController < ApplicationController
   def show
     @playlist = Playlist.find(params[:id])
     @playlist_songs = PlaylistSong.find_by(playlist_id: @playlist.id)
+    @recommendation_songs = RecommendationSong.find_by(playlist_id: @playlist.id)
 
     unless @playlist_songs.nil?
-      # @songs = PlaylistSong.joins(:song).where(playlist_id: @playlist_songs.playlist_id)
-      # @songs = Song.where(id: @playlist_songs.song_id)
       @songs = Song.joins(:playlist_songs).where(playlist_songs: { playlist_id: @playlist_songs.playlist_id } )
+    end
 
+    unless @recommendation_songs.nil?
+      @song_recommendations = Song.joins(:recommendation_songs).where(recommendation_songs: { playlist_id: @recommendation_songs.playlist_id } )
     end
   end
 

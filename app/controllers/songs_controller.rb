@@ -1,6 +1,8 @@
 class SongsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
+  # define new methods for song recommendations or integrate into current methods with logic?
+
   def new
     @playlist = Playlist.find(params[:playlist_id])
     @playlist_song = PlaylistSong.new
