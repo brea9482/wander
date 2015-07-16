@@ -6,11 +6,6 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="index-background-image">
-    <div>
-    <% flash.each do |message_type, message| %>
-      <%= content_tag(:div, message, class: "alert alert-#{message_type} center") %>
-    <% end %>
-    </div>
 
     <div class="header clearfix navbar-fixed-top">
       <nav>
@@ -28,6 +23,16 @@
         <%= link_to "Wander", playlists_path, class:"home-header wander-link" %>
       </h3>
     </div>
+
+    <div class="row flash-msg">
+      <%= flash_messages %>
+    </div>
+
+<!--     <div class="row flash-msg">
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type} center") %>
+  <% end %>
+</div> -->
 
     <div class="container-body">
       <%= yield %>
