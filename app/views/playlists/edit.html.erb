@@ -1,7 +1,8 @@
 <% if user_signed_in? && @playlist.user == current_user  %>
   <div class="well">
     <h1>Edit your playlist</h1>
-
+    <br>
+    
     <%= @playlist.errors.full_messages.first if @playlist.errors.any? %>
 
     <%= render "edit_form" %>
