@@ -10,6 +10,7 @@
       <nav>
         <ul class="nav nav-pills pull-right">
           <% if current_user %>
+            <li><%= link_to 'My Playlists', playlists_path(id: current_user.id), class: "home-header" %></li>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "home-header" %></li>
           <% else %>
             <li><%= link_to 'Sign Up', new_user_registration_path, class: "home-header" %></li>
@@ -18,7 +19,7 @@
         </ul>
       </nav>
       <h3>
-        <%= link_to "Wander", root_path, class: "home-header wander-link" %>
+        <%= link_to "Wander", playlists_path, class: "home-header wander-link" %>
       </h3>
     </div>
 

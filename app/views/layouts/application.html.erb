@@ -28,12 +28,6 @@
       <%= flash_messages %>
     </div>
 
-<!--     <div class="row flash-msg">
-  <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message, class: "alert alert-#{message_type} center") %>
-  <% end %>
-</div> -->
-
     <div class="container-body">
       <%= yield %>
     </div>
@@ -43,10 +37,8 @@
     </div>
 
     <script>
-      /* * * CONFIGURATION VARIABLES * * */
       var sb_soundplayer_client_id = '<%= ENV["CLIENT_ID"] %>';
 
-      /* * * DON'T EDIT BELOW THIS LINE * * */
       (function(d, s, id) {
           if (d.getElementById(id)) return;
           var js, p, fjs = d.getElementsByTagName(s)[0];
