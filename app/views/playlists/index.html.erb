@@ -1,4 +1,6 @@
-<%= render 'search_form'%>
+<div class="search-bar">
+  <%= render 'search_form'%>
+</div>
 <br>
 <div class="well">
   <div class="row">
@@ -23,6 +25,9 @@
       <hr>
     <% end %>
   <% end %>
+  <div>
+  <%= paginate @playlists %>
+</div>
   <br>
   <%= link_to "Create new playlist", new_playlist_path, class:"btn btn-default playlist-color" %>
 </div>
