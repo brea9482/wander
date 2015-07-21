@@ -42,6 +42,12 @@ playlist3 = Playlist.create!(
   user_id: user3.id
 )
 
+playlist4 = Playlist.create!(
+  name: "Led Zepp inspired playlist",
+  description: "Really love those 70's rock groups!",
+  user_id: user3.id
+)
+
 song = Song.create!(
   artist: "Weezer",
   song_name: "Say it ain't so",
@@ -71,6 +77,18 @@ song2 = Song.create!(
   song_name: "Flagpole Sitta",
   genre: "Alternative Rock",
   youtube_url: "https://www.youtube.com/watch?v=nBgmC_USeoM"
+)
+
+PlaylistSong.create!(
+song_id: song2.id,
+playlist_id: playlist.id
+)
+
+song2 = Song.create!(
+  artist: "Green Day",
+  song_name: "Welcome to Paradise",
+  genre: "Alternative Rock",
+  youtube_url: "https://www.youtube.com/watch?v=p9Y-r-rs9W8"
 )
 
 PlaylistSong.create!(

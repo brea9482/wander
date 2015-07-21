@@ -58,38 +58,87 @@ class SongsController < ApplicationController
   def edit
     @playlist = Playlist.find(params[:playlist_id])
     @song = Song.find(params[:id])
-    @playlist_songs = PlaylistSong.find_by(playlist_id: @playlist.id)
+    if @playlist.user_id == current_user.id
+      @playlist_songs = PlaylistSong.find_by(playlist_id: @playlist.id, song_id: @song.id)
+    else
+      @recommendation_song = RecommendationSong.find_by(
+        playlist_id: @playlist.id,
+        song_id: @song.id,
+        recommendee_id: @playlist.user_id,
+        recommender_id: current_user.id
+      )
+    end
   end
 
   def update
     @playlist = Playlist.find(params[:playlist_id])
     @song = Song.find(params[:id])
 
-    if @song.update(song_params)
-      @playlist_song = PlaylistSong.find_by(playlist_id: @playlist.id, song_id: @song.id)
+    if @playlist.user_id == current_user.id
+      if @song.update(song_params)
+        @playlist_song = PlaylistSong.find_by(playlist_id: @playlist.id, song_id: @song.id)
 
-      if @playlist_song.update(playlist_id: @playlist.id, song_id: @song.id)
-        flash[:success] = 'Song successfully updated!'
-        redirect_to @playlist
+        if @playlist_song.update(playlist_id: @playlist.id, song_id: @song.id)
+          flash[:success] = 'Song successfully updated!'
+          redirect_to @playlist
+        else
+          flash[:danger] = "OH SHIT"
+          render :new
+        end
       else
-        flash[:danger] = "OH SHIT"
+        flash[:danger] = 'Song not updated. See below for errors.'
         render :new
       end
     else
-      flash[:danger] = 'Song not updated. See below for errors.'
-      render :new
+      if @song.update(song_params)
+        @recommendation_song = RecommendationSong.find_by(
+          playlist_id: @playlist.id,
+          song_id: @song.id,
+          recommendee_id: @playlist.user_id,
+          recommender_id: current_user.id
+        )
+
+        if @recommendation_song.update(
+          playlist_id: @playlist.id,
+          song_id: @song.id,
+          recommendee_id: @playlist.user_id,
+          recommender_id: current_user.id
+        )
+          flash[:success] = 'Song successfully updated!'
+          redirect_to @playlist
+        else
+          flash[:danger] = "OH SHIT"
+          render :new
+        end
+      else
+        flash[:danger] = 'Song not updated. See below for errors.'
+        render :new
+      end
     end
   end
 
   def destroy
     @playlist = Playlist.find(params[:playlist_id])
     @song = Song.find(params[:id])
-    @playlist_song = PlaylistSong.find_by(playlist_id: @playlist.id, song_id: @song.id)
 
-    @song.destroy
-    @playlist_song.destroy
-    flash[:success] = 'Song successfully deleted!'
-    redirect_to playlist_path(@playlist)
+    if @playlist.user_id == current_user.id
+      @playlist_song = PlaylistSong.find_by(playlist_id: @playlist.id, song_id: @song.id)
+      @song.destroy
+      @playlist_song.destroy
+      flash[:success] = 'Song successfully deleted!'
+      redirect_to playlist_path(@playlist)
+    else
+      @recommendation_song = RecommendationSong.find_by(
+        playlist_id: @playlist.id,
+        song_id: @song.id,
+        recommendee_id: @playlist.user_id,
+        recommender_id: current_user.id
+      )
+      @song.destroy
+      @recommendation_song.destroy
+      flash[:success] = 'Song successfully deleted!'
+      redirect_to playlist_path(@playlist)
+    end
   end
 
   protected
