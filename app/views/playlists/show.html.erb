@@ -82,12 +82,14 @@
                     <iframe width="870" height="250" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
                   <% end %>
                 </ul>
-                <% if @recommendation_songs.recommender_id == current_user.id%>
-                  <%= link_to "Edit song", edit_playlist_song_path(@playlist, song_recommendation) %> |
-                  <%= link_to "Delete song", playlist_song_path(@playlist, song_recommendation), method: :delete %>
-                <% end %>
-                <% if @playlist.user_id == current_user.id%>
-                  <%= link_to "Delete song", playlist_song_path(@playlist, song_recommendation), method: :delete %>
+                <% if user_signed_in? %>
+                  <% if @recommendation_songs.recommender_id == current_user.id %>
+                    <%= link_to "Edit song", edit_playlist_song_path(@playlist, song_recommendation) %> |
+                    <%= link_to "Delete song", playlist_song_path(@playlist, song_recommendation), method: :delete %>
+                  <% end %>
+                  <% if @playlist.user_id == current_user.id%>
+                    <%= link_to "Delete song", playlist_song_path(@playlist, song_recommendation), method: :delete %>
+                  <% end %>
                 <% end %>
                 <hr>
               </div>
