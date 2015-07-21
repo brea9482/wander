@@ -24,28 +24,12 @@ Rails.logger.info "==============================================="
 Rails.logger.info "Creating Playlists"
 Rails.logger.info "==============================================="
 
+# Playlist 1
+
 playlist = Playlist.create!(
   name: "Old school 90's alternative rock",
   description: "Really love Weezer and the Offspring form those days",
   user_id: user.id
-)
-
-playlist2 = Playlist.create!(
-  name: "New Age Psych Rock!!",
-  description: "Anything with crunchy fuzzed out guitars and reverb",
-  user_id: user2.id
-)
-
-playlist3 = Playlist.create!(
-  name: "Pat's music 2015",
-  description: "Just a list of some really cool songs I've heard lately",
-  user_id: user3.id
-)
-
-playlist4 = Playlist.create!(
-  name: "Led Zepp inspired playlist",
-  description: "Really love those 70's rock groups!",
-  user_id: user3.id
 )
 
 song = Song.create!(
@@ -84,7 +68,7 @@ song_id: song2.id,
 playlist_id: playlist.id
 )
 
-song2 = Song.create!(
+song3 = Song.create!(
   artist: "Green Day",
   song_name: "Welcome to Paradise",
   genre: "Alternative Rock",
@@ -92,6 +76,86 @@ song2 = Song.create!(
 )
 
 PlaylistSong.create!(
-song_id: song2.id,
+song_id: song3.id,
 playlist_id: playlist.id
+)
+
+# Playlist 2
+
+playlist2 = Playlist.create!(
+  name: "New Age Psych Rock!!",
+  description: "Anything with crunchy fuzzed out guitars and reverb",
+  user_id: user2.id
+)
+
+song4 = Song.create!(
+  artist: "Tame Impala",
+  song_name: "Feels like we only go backwards",
+  genre: "Psychedelic Rock",
+  soundcloud_url: "https://soundcloud.com/tame-impala/feels-like-we-only-go"
+)
+
+PlaylistSong.create!(
+song_id: song4.id,
+playlist_id: playlist2.id
+)
+
+song5 = Song.create!(
+  artist: "Mac Demarco",
+  song_name: "Ode to Victory",
+  genre: "Surf",
+  soundcloud_url: "https://soundcloud.com/capturedtracks/mac-demarco-ode-to-viceroy"
+)
+
+PlaylistSong.create!(
+song_id: song5.id,
+playlist_id: playlist2.id
+)
+
+song6 = Song.create!(
+  artist: "Temples",
+  song_name: "Shelter Song",
+  genre: "Psychedelic Rock",
+  soundcloud_url: "https://soundcloud.com/templesofficial/shelter-song"
+)
+
+PlaylistSong.create!(
+song_id: song6.id,
+playlist_id: playlist2.id
+)
+
+song7 = Song.create!(
+  artist: "Allah-Las",
+  song_name: "Catamaran",
+  genre: "Surf",
+  soundcloud_url: "https://soundcloud.com/allahlas/catamaran"
+)
+
+PlaylistSong.create!(
+song_id: song7.id,
+playlist_id: playlist2.id
+)
+
+# Playlist 3
+
+playlist3 = Playlist.create!(
+  name: "Pat's music 2015",
+  description: "Just a list of some really cool songs I've heard lately",
+  user_id: user3.id
+)
+
+# Playlist 4
+
+playlist4 = Playlist.create!(
+  name: "Led Zepp inspired playlist",
+  description: "Really love those 70's rock groups!",
+  user_id: user3.id
+)
+
+# Playlist 4
+
+playlist5 = Playlist.create!(
+  name: "Funk Jazzzzzzzzzz",
+  description: "Give me that funk jazz!!!!",
+  user_id: user3.id
 )
