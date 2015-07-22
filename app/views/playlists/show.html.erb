@@ -102,10 +102,10 @@
   <% if @playlist.user == current_user%>
     <div class="row">
       <div class="col-sm-6">
-          <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist), class:"btn btn-default song-color" %>
+        <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist), class:"btn btn-default song-color" %>
       </div>
       <div class="col-sm-6">
-          <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-default btn-danger" %>
+        <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-default btn-danger" %>
       </div>
     </div>
   <% end %>
@@ -122,9 +122,31 @@
   </div>
 
   <% unless @comments.nil? %>
-    <% @comments.each do |comment| %>
-      <%= comment.title %>
-    <% end %>
+    <% iteration = 1 %>
+    <div class="row">
+      <hr>
+      <div class="container comment">
+        <% @comments.each do |comment| %>
+          <h5 style="font-style: italic"> Comment <%= iteration %></h5>
+          <h5 style="font-weight: bold"> <%= comment.title %></h5>
+          <h5> <%= comment.description %></h5>
+          <% iteration += 1 %>
+          <% if current_user == comment.user %>
+            <br>
+            <div class="col-sm-3">
+              <%= link_to "Edit this comment.", edit_playlist_comment_path(@playlist, comment), class:"btn btn-warning btn-sm" %>
+            </div>
+            <div class="col-sm-3 col-sm-offset-1">
+              <%= link_to "Delete this comment.", playlist_comment_path(@playlist, comment), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-danger btn-sm" %>
+            </div>
+          <% elsif current_user == @playlist.user%>
+            <br>
+            <div class="col-sm-6 col-sm-offset-3">
+              <%= link_to "Delete this comment.", playlist_comment_path(@playlist, comment), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-danger btn-sm" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-
 </div>

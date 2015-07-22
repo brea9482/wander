@@ -16,12 +16,27 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @playlist = Playlist.find(params[:playlist_id])
+    @comment = Comment.find(params[:id])
   end
 
   def update
+    @playlist = Playlist.find(params[:playlist_id])
+    @comment = Comment.find(params[:id])
+
+    if @comment.update(comment_params)
+      flash[:success] = "Comment changed successfully!"
+      redirect_to playlist_path(@playlist)
+    else
+      flash[:danger] = 'Comment not changed. See below for errors.'
+      render :new
+    end
   end
 
   def destroy
+    @playlist = Playlist.find(params[:playlist_id])
+    @comment = Comment.find(params[:id])
+
     if @comment.destroy
       flash[:success] = "Comment deleted successfully."
     else
