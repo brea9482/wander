@@ -6,7 +6,7 @@
         <%= @playlist.description %>
       </p>
 
-      <% if @playlist.user == current_user%>
+      <% if @playlist.user == current_user %>
         <p>
           <%= link_to "Change your playlist name and description", edit_playlist_path(@playlist) %>
         </p>
@@ -98,16 +98,33 @@
       <% end %>
      </div>
    </div>
+  <br>
+  <% if @playlist.user == current_user%>
+    <div class="row">
+      <div class="col-sm-6">
+          <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist), class:"btn btn-default song-color" %>
+      </div>
+      <div class="col-sm-6">
+          <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-default btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+  <br>
 </div>
 
-<br>
-<% if @playlist.user == current_user%>
-  <div class="row">
-    <div class="col-sm-6">
-        <%= link_to "Add a new song to your playlist.", new_playlist_song_path(@playlist), class:"btn btn-default song-color" %>
-    </div>
-    <div class="col-sm-6">
-        <%= link_to "Delete your playlist.", playlist_path(@playlist), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-default btn-danger" %>
-    </div>
+<div class="well">
+  <h3>Comments</h3>
+
+  <h5>Add a new comment</h5>
+
+  <div class="">
+    <%= render 'comments/comment_form'%>
   </div>
-<% end %>
+
+  <% unless @comments.nil? %>
+    <% @comments.each do |comment| %>
+      <%= comment.title %>
+    <% end %>
+  <% end %>
+
+</div>

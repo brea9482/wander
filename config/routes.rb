@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :playlists do
     resources :songs
+    resources :comments
   end
 
   resources :playlists_songs do

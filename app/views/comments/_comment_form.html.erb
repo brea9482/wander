@@ -1,0 +1,20 @@
+<div>
+  <%= form_for [@playlist, @comment] do |f| %>
+    <div class="row">
+      <div class="form-group col-sm-8 col-sm-offset-2">
+        <%= f.label :title, "Comment Name", class: "sr-only" %>
+        <%= f.text_field :title, class: "form-control", placeholder: "Title for your comment" %>
+      </div>
+      <div class="form-group col-sm-8 col-sm-offset-2">
+        <%= f.label :description, "Comment Description", class: "sr-only" %>
+        <%= f.text_area :description, class: "form-control", placeholder: "Write your comment here" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-6 col-sm-offset-3">
+        <%= f.submit "Submit Comment", class: "btn btn-info form-control" %>
+      </div>
+    </div>
+  <% end %>
+    <div class="clear"></div>
+</div>
