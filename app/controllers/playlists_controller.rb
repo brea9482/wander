@@ -31,6 +31,8 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @playlist_songs = PlaylistSong.find_by(playlist_id: @playlist.id)
     @recommendation_songs = RecommendationSong.find_by(playlist_id: @playlist.id)
+    @comments = Comment.where(playlist_id: params[:id])
+    @comment = Comment.new
 
     unless @playlist_songs.nil?
       @songs = Song.joins(:playlist_songs).where(playlist_songs: { playlist_id: @playlist_songs.playlist_id } )
@@ -59,7 +61,11 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist = Playlist.find(params[:id])
-    @playlist.destroy
+    if @playlist.destroy
+      flash[:success] = "Playlist deleted successfully."
+    else
+      flash.now[:danger] = "Playlist not deleted."
+    end
     redirect_to playlists_path
   end
 

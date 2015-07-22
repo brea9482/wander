@@ -1,0 +1,8 @@
+<div class="well">
+  <h1>Edit your comment</h1>
+  <br>
+
+  <%= @comment.errors.full_messages.first if @comment.errors.any? %>
+
+  <%= render "edit_form" %>
+</div>
