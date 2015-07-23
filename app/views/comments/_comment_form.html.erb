@@ -1,4 +1,6 @@
 <div>
+  <%= @comment.errors.full_messages.first if @comment.errors.any? %>
+
   <%= form_for [@playlist, @comment] do |f| %>
     <div class="row">
       <div class="form-group col-sm-8 col-sm-offset-2">

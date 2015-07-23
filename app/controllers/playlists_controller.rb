@@ -12,7 +12,7 @@ class PlaylistsController < ApplicationController
       flash[:success] = "Playlist created successfully!"
       redirect_to @playlist
     else
-      flash[:danger] = 'Playlist not created. See below for errors.'
+      flash[:alert] = 'Playlist not created. See below for errors.'
       render :new
     end
   end
@@ -54,7 +54,7 @@ class PlaylistsController < ApplicationController
       flash[:success] = "Playlist updated successfully!"
       redirect_to @playlist
     else
-      flash[:danger] = "Playlist not updated. See below for errors."
+      flash[:alert] = "Playlist not updated. See below for errors."
       render :new
     end
   end
@@ -64,7 +64,7 @@ class PlaylistsController < ApplicationController
     if @playlist.destroy
       flash[:success] = "Playlist deleted successfully."
     else
-      flash.now[:danger] = "Playlist not deleted."
+      flash.now[:alert] = "Playlist not deleted."
     end
     redirect_to playlists_path
   end
