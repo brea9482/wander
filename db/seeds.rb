@@ -95,7 +95,7 @@ song4 = Song.create!(
   artist: "Tame Impala",
   song_name: "Feels like we only go backwards",
   genre: "Psychedelic Rock",
-  soundcloud_url: "https://soundcloud.com/tame-impala/feels-like-we-only-go"
+  soundcloud_url: "http://soundcloud.com/tame-impala/feels-like-we-only-go"
 )
 
 PlaylistSong.create!(
@@ -107,7 +107,7 @@ song5 = Song.create!(
   artist: "Mac Demarco",
   song_name: "Ode to Victory",
   genre: "Surf",
-  soundcloud_url: "https://soundcloud.com/capturedtracks/mac-demarco-ode-to-viceroy"
+  soundcloud_url: "http://soundcloud.com/capturedtracks/mac-demarco-ode-to-viceroy"
 )
 
 PlaylistSong.create!(
@@ -119,7 +119,7 @@ song6 = Song.create!(
   artist: "Temples",
   song_name: "Shelter Song",
   genre: "Psychedelic Rock",
-  soundcloud_url: "https://soundcloud.com/templesofficial/shelter-song"
+  soundcloud_url: "http://soundcloud.com/templesofficial/shelter-song"
 )
 
 PlaylistSong.create!(
