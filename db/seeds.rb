@@ -4,18 +4,21 @@ Rails.logger.info "==============================================="
 
 user = User.create!(
     email: "breault.patrick@gmail.com",
+    username: "braaaa",
     password: "password",
     password_confirmation: "password"
   )
 
 user2 = User.create!(
     email: "test@test.com",
+    username: "musiclover",
     password: "password",
     password_confirmation: "password"
   )
 
 user3 = User.create!(
     email: "testtest@test.com",
+    username: "crazycali",
     password: "password",
     password_confirmation: "password"
   )
