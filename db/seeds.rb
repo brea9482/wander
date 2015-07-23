@@ -83,6 +83,20 @@ song_id: song3.id,
 playlist_id: playlist.id
 )
 
+song30 = Song.create!(
+  artist: "The Presidents of the Unites States of America",
+  song_name: "Lump",
+  genre: "Alternative Rock",
+  youtube_url: "https://www.youtube.com/watch?v=_sj_U6vObUA"
+)
+
+RecommendationSong.create!(
+song_id: song30.id,
+playlist_id: playlist.id,
+recommender_id: user2.id,
+recommendee_id: user.id
+)
+
 # Playlist 2
 
 playlist2 = Playlist.create!(
@@ -131,7 +145,7 @@ song7 = Song.create!(
   artist: "Allah-Las",
   song_name: "Catamaran",
   genre: "Surf",
-  soundcloud_url: "https://soundcloud.com/allahlas/catamaran"
+  youtube_url: "https://www.youtube.com/watch?v=yIJ-RsIO1eA"
 )
 
 PlaylistSong.create!(
@@ -147,6 +161,54 @@ playlist3 = Playlist.create!(
   user_id: user3.id
 )
 
+song80 = Song.create!(
+  artist: "Foster the People",
+  song_name: "Pseudologia Fantastica",
+  genre: "Psychedelic Rock",
+  youtube_url: "https://www.youtube.com/watch?v=5-mTcFGiVzw"
+)
+
+PlaylistSong.create!(
+song_id: song80.id,
+playlist_id: playlist3.id
+)
+
+song8 = Song.create!(
+  artist: "Ratatat",
+  song_name: "Cream on Chrome",
+  genre: "Electriconic",
+  youtube_url: "https://www.youtube.com/watch?v=xlcywgEMuGI"
+)
+
+PlaylistSong.create!(
+song_id: song8.id,
+playlist_id: playlist3.id
+)
+
+song9 = Song.create!(
+  artist: "Tame Impala",
+  song_name: "Let it Happen",
+  genre: "Psychedelic Rock",
+  youtube_url: "https://www.youtube.com/watch?v=-ed6UeDp1ek"
+)
+
+PlaylistSong.create!(
+song_id: song9.id,
+playlist_id: playlist3.id
+)
+
+song10 = Song.create!(
+  artist: "Lower Dens",
+  song_name: "Brains",
+  genre: "Indie Rock",
+  youtube_url: "https://www.youtube.com/watch?v=OyxzjF8IjE8"
+)
+
+PlaylistSong.create!(
+song_id: song10.id,
+playlist_id: playlist3.id
+)
+
 # Playlist 4
 
 playlist4 = Playlist.create!(
@@ -155,10 +217,108 @@ playlist4 = Playlist.create!(
   user_id: user3.id
 )
 
+song11 = Song.create!(
+  artist: "Led Zeppelin",
+  song_name: "Dazed and Confused",
+  genre: "Classic Rock",
+  youtube_url: "https://www.youtube.com/watch?v=ehwSEVbBZl4"
+)
+
+PlaylistSong.create!(
+song_id: song11.id,
+playlist_id: playlist4.id
+)
+
+song12 = Song.create!(
+  artist: "Led Zeppelin",
+  song_name: "Immigrant Song",
+  genre: "Classic Rock",
+  youtube_url: "https://www.youtube.com/watch?v=kEGuHdKn0Lc"
+)
+
+PlaylistSong.create!(
+song_id: song12.id,
+playlist_id: playlist4.id
+)
+
+song13 = Song.create!(
+  artist: "Led Zeppelin",
+  song_name: "Immigrant Song",
+  genre: "Classic Rock",
+  youtube_url: "https://www.youtube.com/watch?v=kEGuHdKn0Lc"
+)
+
+PlaylistSong.create!(
+song_id: song13.id,
+playlist_id: playlist4.id
+)
+
+song14 = Song.create!(
+  artist: "Rolling Stones",
+  song_name: "Jumpin Jack Flash",
+  genre: "Classic Rock",
+  youtube_url: "https://www.youtube.com/watch?v=eQSGw0hMd_I"
+)
+
+PlaylistSong.create!(
+song_id: song14.id,
+playlist_id: playlist4.id
+)
+
 # Playlist 4
 
 playlist5 = Playlist.create!(
   name: "Funk Jazzzzzzzzzz",
   description: "Give me that funk jazz!!!!",
   user_id: user3.id
+)
+
+song15 = Song.create!(
+  artist: "The Meters",
+  song_name: "Funky Miracle",
+  genre: "Funk",
+  youtube_url: "https://www.youtube.com/watch?v=1jrmtmQIc9k"
+)
+
+PlaylistSong.create!(
+song_id: song15.id,
+playlist_id: playlist5.id
+)
+
+song16 = Song.create!(
+  artist: "Daft Punk",
+  song_name: "Da Funk",
+  genre: "Electronic",
+  youtube_url: "https://www.youtube.com/watch?v=n1ZqN_VFhdo"
+)
+
+PlaylistSong.create!(
+song_id: song16.id,
+playlist_id: playlist5.id
+)
+
+song17 = Song.create!(
+  artist: "James Brown",
+  song_name: "I got to move",
+  genre: "Funk",
+  youtube_url: "https://www.youtube.com/watch?v=aVpAMK7Z600"
+)
+
+PlaylistSong.create!(
+song_id: song17.id,
+playlist_id: playlist5.id
+)
+
+song18 = Song.create!(
+  artist: "Jamiroquai",
+  song_name: "Virtual Insanity",
+  genre: "Funk",
+  youtube_url: "https://www.youtube.com/watch?v=Et9b7LWfnxQ"
+)
+
+RecommendationSong.create!(
+song_id: song18.id,
+playlist_id: playlist5.id,
+recommender_id: user.id,
+recommendee_id: user3.id
 )

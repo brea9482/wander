@@ -26,6 +26,7 @@ class Song < ActiveRecord::Base
   'Blues',
   'Blues Rock',
   'Classical',
+  'Classic Rock',
   'Country',
   'Dance',
   'Dubstep',
