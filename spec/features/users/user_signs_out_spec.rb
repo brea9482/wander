@@ -22,6 +22,8 @@ feature 'user signs out', %Q{
 
     expect(page).to have_content('Signed in successfully')
 
+    click_on 'My Playlists'
+
     click_link 'Sign Out'
     expect(page).to have_content('Signed out successfully')
   end

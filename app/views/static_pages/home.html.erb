@@ -11,7 +11,6 @@
         <ul class="nav nav-pills pull-right">
           <% if current_user %>
             <li><%= link_to 'My Playlists', playlists_path(id: current_user.id), class: "home-header" %></li>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "home-header" %></li>
           <% else %>
             <li><%= link_to 'Sign Up', new_user_registration_path, class: "home-header" %></li>
             <li><%= link_to 'Sign In', new_user_session_path, class: "home-header" %></li>
@@ -22,6 +21,11 @@
         <%= link_to image_tag("wander3.gif"), playlists_path, class:"home-header wander-link" %>
       </h3>
     </div>
+
+    <div class="row flash-msg flash">
+      <%= flash_messages %>
+    </div>
+
 
     <div class="search-bar-container">
       <%= render "search_form" %>

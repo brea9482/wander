@@ -16,13 +16,13 @@ feature 'user registers', %Q{
     visit new_user_registration_path
 
     fill_in 'Email', with: 'john@example.com'
+    fill_in 'Username', with: 'johnjohn'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
 
     click_button 'Sign up'
 
     expect(page).to have_content('Welcome! You have signed up successfully.')
-    expect(page).to have_content('Sign Out')
   end
 
   scenario 'provide invalid registration information' do

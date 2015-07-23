@@ -16,7 +16,9 @@ feature 'user creates a new song', %{
 
     fill_in "Artist", with: "Tame Impala"
     fill_in "Song Name", with: "Elephant"
-    fill_in "Genre", with: "Rock"
+    select "Rock", from: "Genre"
+    fill_in "SoundCloud URL", with: "http://soundcloud.com/tame-impala/feels-like-we-only-go"
+
 
     click_on "Add this song!"
 

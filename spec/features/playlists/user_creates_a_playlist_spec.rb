@@ -13,6 +13,7 @@ feature 'user creates a new playlist', %{
     visit new_playlist_path
 
     fill_in "Name", with: "New Playlist"
+    fill_in "Description", with: "Description"
 
     click_on "Submit new playlist!"
 
@@ -30,7 +31,7 @@ feature 'user creates a new playlist', %{
 
     click_on "Submit new playlist!"
 
-    expect(page).to have_content("Error")
+    expect(page).to have_content("errors")
   end
 
 end
