@@ -32,7 +32,7 @@
     <div id="my-tab-content" class="tab-content">
       <div class="tab-pane active" id="playlist">
         <% if @playlist.user != current_user%>
-          <%= link_to "Make a recommendation for this playlist!.", new_playlist_song_path(@playlist), class:"btn btn-default song-color" %>
+          <%= link_to "Make a recommendation for this playlist!", new_playlist_song_path(@playlist), class:"btn btn-default song-color" %>
           <hr>
         <% end %>
         <% unless @songs.blank? %>
