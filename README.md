@@ -20,9 +20,9 @@ Technologies include:
 1. [Contributing](#contributing)
 1. [License](#license)
 
-## Download
+## Clone
 
-- git clone [Latest Version](https://github.com/brea9482/wander)
+- git clone https://github.com/brea9482/wander
 
 
 ### Rails
