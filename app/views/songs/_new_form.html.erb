@@ -22,7 +22,7 @@
         <%= f.label :genre, "Genre", class: "control-label col-sm-2" %>
         <div class="col-sm-10">
           <select class="form-control"
-            <%= f.select :genre, options_for_select(Song::GENRE) %>
+            <%= f.select :genre, options_for_select(Song::GENRE), include_blank: true %>
           </select>
         </div>
       </div>
