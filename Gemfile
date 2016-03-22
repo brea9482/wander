@@ -1,5 +1,8 @@
+ruby '2.2.3'
+
 source 'https://rubygems.org'
 
+gem 'active_model_serializers'
 gem 'devise'
 gem 'rails', '4.2.2'
 gem 'pg'
@@ -47,5 +50,3 @@ group :development, :test do
 end
 
 gem 'coveralls', group: [:test], require: false
-
-ruby "2.2.1"

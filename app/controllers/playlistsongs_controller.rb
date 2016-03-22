@@ -1,2 +1,0 @@
-class PlaylistsongsController < ApplicationController
-end
